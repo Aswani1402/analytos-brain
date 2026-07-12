@@ -1,0 +1,44 @@
+query list_products() {
+    match {
+        $product: Product
+    }
+
+    return {
+        $product.slug,
+        $product.name,
+        $product.description
+    }
+
+    limit 50
+}
+
+query list_features() {
+    match {
+        $feature: Feature
+    }
+
+    return {
+        $feature.slug,
+        $feature.name,
+        $feature.description
+    }
+
+    limit 50
+}
+
+query get_product_features($product_slug: String) {
+    match {
+        $product: Product { slug: $product_slug }
+        $product hasFeature $feature
+    }
+
+    return {
+        $product.slug,
+        $product.name,
+        $feature.slug,
+        $feature.name,
+        $feature.description
+    }
+
+    limit 50
+}

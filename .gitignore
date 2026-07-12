@@ -12,3 +12,7 @@ data/
 *.log
 
 .idea/
+
+# Omnigraph local runtime data
+omnigraph/__cluster/
+omnigraph/graphs/

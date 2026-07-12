@@ -1,0 +1,9 @@
+version: 1
+
+metadata:
+  name: analytos-brain-local
+
+graphs:
+  knowledge:
+    schema: schema.pg
+    queries: queries/

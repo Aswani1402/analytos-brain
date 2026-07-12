@@ -1,0 +1,23 @@
+// Minimal Analytos Brain schema.
+// "id" is generated internally by Omnigraph.
+// "slug" is our stable business identifier.
+
+node Product {
+    slug: String
+    name: String @index
+    description: String
+
+    @key(slug)
+}
+
+node Feature {
+    slug: String
+    name: String @index
+    description: String
+
+    @key(slug)
+}
+
+edge HasFeature: Product -> Feature {
+    @unique(src, dst)
+}

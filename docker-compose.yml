@@ -1,0 +1,42 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    environment:
+      ANALYTOS_DB_PATH: /app/data/analytos_brain.db
+      OMNIGRAPH_GRAPH_URI: /app/omnigraph/graphs/knowledge.omni
+      OMNIGRAPH_BIN: /usr/local/bin/omnigraph
+      INGEST_OUTPUT_DIR: /app/data/ingestion
+      ANALYTOS_CORS_ORIGINS: http://localhost:5173,http://127.0.0.1:5173
+      LLM_PROVIDER: ${LLM_PROVIDER:-}
+      LLM_MODEL: ${LLM_MODEL:-}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      S3_ENDPOINT_URL: ${S3_ENDPOINT_URL:-}
+      S3_BUCKET: ${S3_BUCKET:-}
+      RUSTFS_ENDPOINT_URL: ${RUSTFS_ENDPOINT_URL:-http://rustfs:9000}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./omnigraph:/app/omnigraph
+
+  dashboard:
+    build:
+      context: ./apps/dashboard
+      dockerfile: Dockerfile
+    ports:
+      - "5173:80"
+    depends_on:
+      - api
+
+  rustfs:
+    image: rustfs/rustfs:latest
+    profiles: ["storage"]
+    ports:
+      - "9000:9000"
+    volumes:
+      - rustfs-data:/data
+
+volumes:
+  rustfs-data:

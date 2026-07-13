@@ -15,6 +15,7 @@ class ApiSettings:
     prompt_version: str
     allowed_upload_dir: Path
     query_file: Path
+    cors_origins: tuple[str, ...]
     command_timeout_seconds: int = 30
 
 
@@ -45,5 +46,10 @@ def load_api_settings() -> ApiSettings:
         prompt_version=os.getenv("PROMPT_VERSION", "v1"),
         allowed_upload_dir=allowed_upload_dir.resolve(),
         query_file=query_file.resolve(),
+        cors_origins=tuple(
+            origin.strip()
+            for origin in os.getenv("ANALYTOS_CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173").split(",")
+            if origin.strip()
+        ),
         command_timeout_seconds=int(os.getenv("OMNIGRAPH_TIMEOUT_SECONDS", "30")),
     )

@@ -1,0 +1,217 @@
+{
+  "approved_proof_points_used": [
+    {
+      "fact": "first_pass_accuracy 92% 92% first-pass dimension extraction accuracy.",
+      "name": "92 percent extraction accuracy",
+      "slug": "proof:inspectly:92-percent-extraction-accuracy"
+    },
+    {
+      "fact": "inspection_plan_time under 20 minutes Inspection plan creation reduced from 4-6 hours per part to under 20 minutes.",
+      "name": "inspection plan under 20 minutes",
+      "slug": "proof:inspectly:inspection-plan-under-20-minutes"
+    },
+    {
+      "fact": "quality_contexts ISO 13485 and AS9100 Supports ISO 13485 and AS9100 quality documentation contexts.",
+      "name": "regulated quality context support",
+      "slug": "proof:inspectly:regulated-quality-context-support"
+    }
+  ],
+  "competitor_or_displacement_angle": "Position against spreadsheet-heavy manual workflows and forecast-push planning when supported by approved graph evidence.",
+  "generation_mode": "deterministic",
+  "graph_evidence": [
+    {
+      "data": {
+        "approved_for_external_use": "true",
+        "baseline": null,
+        "confidence": "0.90",
+        "confidentiality_note": "Client name must remain confidential.",
+        "created_at": "2026-07-13T11:55:22.264897+00:00",
+        "customer_segment": null,
+        "external_label": "anonymous customer",
+        "id": "proof:inspectly:92-percent-extraction-accuracy",
+        "metric_name": "first_pass_accuracy",
+        "metric_value": "92%",
+        "name": "92 percent extraction accuracy",
+        "proof_type": "metric",
+        "result": "92% first-pass dimension extraction accuracy.",
+        "slug": "proof:inspectly:92-percent-extraction-accuracy",
+        "source_document_id": "source-document:inspectly-product-overview-md:726e20ba50d7",
+        "source_excerpt": "92% first-pass dimension extraction accuracy.",
+        "source_file": "inspectly-product-overview.md",
+        "timeframe": null,
+        "updated_at": "2026-07-13T11:55:22.264901+00:00",
+        "visibility": "external_approved"
+      },
+      "type": "ProofPoint"
+    },
+    {
+      "data": {
+        "approved_for_external_use": "true",
+        "baseline": null,
+        "confidence": "0.90",
+        "confidentiality_note": "Client name must remain confidential.",
+        "created_at": "2026-07-13T11:55:22.264857+00:00",
+        "customer_segment": null,
+        "external_label": "anonymous customer",
+        "id": "proof:inspectly:inspection-plan-under-20-minutes",
+        "metric_name": "inspection_plan_time",
+        "metric_value": "under 20 minutes",
+        "name": "inspection plan under 20 minutes",
+        "proof_type": "metric",
+        "result": "Inspection plan creation reduced from 4-6 hours per part to under 20 minutes.",
+        "slug": "proof:inspectly:inspection-plan-under-20-minutes",
+        "source_document_id": "source-document:inspectly-product-overview-md:726e20ba50d7",
+        "source_excerpt": "Inspection plan creation reduced from 4-6 hours per part to under 20 minutes.",
+        "source_file": "inspectly-product-overview.md",
+        "timeframe": null,
+        "updated_at": "2026-07-13T11:55:22.264860+00:00",
+        "visibility": "external_approved"
+      },
+      "type": "ProofPoint"
+    },
+    {
+      "data": {
+        "approved_for_external_use": "true",
+        "baseline": null,
+        "confidence": "0.90",
+        "confidentiality_note": "Client name must remain confidential.",
+        "created_at": "2026-07-13T11:55:22.264924+00:00",
+        "customer_segment": null,
+        "external_label": "anonymous customer",
+        "id": "proof:inspectly:regulated-quality-context-support",
+        "metric_name": "quality_contexts",
+        "metric_value": "ISO 13485 and AS9100",
+        "name": "regulated quality context support",
+        "proof_type": "metric",
+        "result": "Supports ISO 13485 and AS9100 quality documentation contexts.",
+        "slug": "proof:inspectly:regulated-quality-context-support",
+        "source_document_id": "source-document:inspectly-product-overview-md:726e20ba50d7",
+        "source_excerpt": "Supports ISO 13485 and AS9100 quality documentation contexts.",
+        "source_file": "inspectly-product-overview.md",
+        "timeframe": null,
+        "updated_at": "2026-07-13T11:55:22.264927+00:00",
+        "visibility": "external_approved"
+      },
+      "type": "ProofPoint"
+    },
+    {
+      "data": {
+        "category": "Pull Kanban inventory intelligence for discrete manufacturing",
+        "competitive_alternatives": null,
+        "confidence": "0.90",
+        "created_at": "2026-07-13T11:55:20.320936+00:00",
+        "id": "product:stockly",
+        "name": "Stockly",
+        "owner": "Analytos Labs product team",
+        "positioning": null,
+        "site_url": "stockly.analytos.ai",
+        "slug": "product:stockly",
+        "source_document_id": "source-document:stockly-product-overview-md:d802a84c760a",
+        "source_excerpt": "AI-driven Pull Kanban engine that right-sizes kanban loops and safety stock.",
+        "source_file": "stockly-product-overview.md",
+        "status": "in_production_pilot_customers",
+        "summary": "AI-driven Pull Kanban engine that right-sizes kanban loops and safety stock.",
+        "target_buyer": null,
+        "technical_stack": null,
+        "updated_at": "2026-07-13T11:55:20.320956+00:00",
+        "visibility": "internal"
+      },
+      "type": "Product"
+    },
+    {
+      "data": {
+        "channel_notes": null,
+        "confidence": "0.90",
+        "created_at": "2026-07-13T11:55:24.172538+00:00",
+        "disqualifiers": "Process manufacturing, revenue under $30M, Fortune 500, homegrown ERP without API access",
+        "employee_range": "100-2,000",
+        "erp_footprint": "NetSuite or SAP Business One preferred; Epicor/Infor acceptable",
+        "geography": "US Midwest/Southeast first, then EU",
+        "id": "icp:mid-market-discrete-manufacturers",
+        "name": "Mid-Market Discrete Manufacturers",
+        "plant_range": "1-6 plants",
+        "revenue_range": "$50M-$500M",
+        "sectors": "precision machining, medical device manufacturing, industrial equipment, packaging, automotive tier-2 suppliers, electronics assembly, aerospace suppliers",
+        "segment_type": "direct",
+        "slug": "icp:mid-market-discrete-manufacturers",
+        "source_document_id": "source-document:icp-analytos-md:381c2eb86f8b",
+        "source_excerpt": "Segment 1 - Mid-Market Discrete Manufacturers",
+        "source_file": "icp-analytos.md",
+        "status": "active",
+        "trigger_signals": "Kanban on cards or Excel, working-capital pressure, hiring planners or quality engineers, ISO 13485/AS9100, NetStock evaluation or churn",
+        "updated_at": "2026-07-13T11:55:24.172557+00:00",
+        "value_framing": null,
+        "visibility": "internal"
+      },
+      "type": "ICPSegment"
+    },
+    {
+      "data": {
+        "cares_about": "EBITDA, capex vs opex, risk",
+        "confidence": "0.90",
+        "created_at": "2026-07-13T11:55:24.172709+00:00",
+        "economic_role": null,
+        "id": "persona:cfo-pe-operating-partner",
+        "losing_message": null,
+        "name": "CFO / PE Operating Partner",
+        "product_focus": "Stockly and Inspectly",
+        "role_in_deal": "Economic buyer",
+        "slug": "persona:cfo-pe-operating-partner",
+        "source_document_id": "source-document:icp-analytos-md:381c2eb86f8b",
+        "source_excerpt": "CFO / PE Operating Partner persona",
+        "source_file": "icp-analytos.md",
+        "updated_at": "2026-07-13T11:55:24.172712+00:00",
+        "visibility": "internal",
+        "winning_message": "Working capital release plus perpetual license, 2-week POC proof"
+      },
+      "type": "Persona"
+    }
+  ],
+  "graph_node_slugs": [
+    "proof:inspectly:92-percent-extraction-accuracy",
+    "proof:inspectly:inspection-plan-under-20-minutes",
+    "proof:inspectly:regulated-quality-context-support",
+    "product:stockly",
+    "icp:mid-market-discrete-manufacturers",
+    "persona:cfo-pe-operating-partner"
+  ],
+  "grounded_opening_angle": "Lead with 92 percent extraction accuracy: first_pass_accuracy 92% 92% first-pass dimension extraction accuracy.",
+  "illustrative_companies": [
+    {
+      "label": "illustrative/plausible example, not a graph fact",
+      "name": "Midwest Precision Components"
+    },
+    {
+      "label": "illustrative/plausible example, not a graph fact",
+      "name": "Southeast Medical Assemblies"
+    },
+    {
+      "label": "illustrative/plausible example, not a graph fact",
+      "name": "Great Lakes Industrial Equipment"
+    }
+  ],
+  "persona_to_contact": {
+    "name": "CFO / PE Operating Partner",
+    "pains_and_goals": "EBITDA, capex vs opex, risk",
+    "role_in_deal": "Economic buyer",
+    "winning_message": "Working capital release plus perpetual license, 2-week POC proof"
+  },
+  "source_documents": [
+    "icp-analytos.md",
+    "inspectly-product-overview.md",
+    "stockly-product-overview.md"
+  ],
+  "target_company_profile": {
+    "company_size": "100-2,000",
+    "erp_or_technical_signals": "NetSuite or SAP Business One preferred; Epicor/Infor acceptable",
+    "firmographics": {
+      "employee_range": "100-2,000",
+      "plant_range": "1-6 plants",
+      "revenue_range": "$50M-$500M"
+    },
+    "geography": "US Midwest/Southeast first, then EU",
+    "industries": "precision machining, medical device manufacturing, industrial equipment, packaging, automotive tier-2 suppliers, electronics assembly, aerospace suppliers",
+    "product": "Stockly",
+    "trigger_signals": "Kanban on cards or Excel, working-capital pressure, hiring planners or quality engineers, ISO 13485/AS9100, NetStock evaluation or churn"
+  }
+}

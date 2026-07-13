@@ -3,6 +3,12 @@ version: 1
 metadata:
   name: analytos-brain-local
 
+policies:
+  analytos:
+    applies_to:
+      - knowledge
+    file: ../policies/analytos.cedar
+
 graphs:
   knowledge:
     schema: schema.pg

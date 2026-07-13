@@ -20,6 +20,18 @@ class RejectionRequest(BaseModel):
     reason: str = Field(min_length=1, max_length=1000)
 
 
+class ContentAgentRequest(BaseModel):
+    topic: str = Field(min_length=1, max_length=200)
+    actor: str = Field(default="content-agent", min_length=2, max_length=80)
+    generation_mode: str = "deterministic"
+
+
+class GTMAgentRequest(BaseModel):
+    product: str = Field(min_length=1, max_length=100)
+    actor: str = Field(default="gtm-agent", min_length=2, max_length=80)
+    generation_mode: str = "deterministic"
+
+
 class WorkflowRun(BaseModel):
     run_id: str
     source_path: str

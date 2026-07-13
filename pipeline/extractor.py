@@ -1,9 +1,13 @@
 from __future__ import annotations
 
+import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any
 
 from .document_reader import SourceDocumentInput
+from .edge_endpoints import ensure_edge_endpoints
 from .id_generator import slugify
 from .models import (
     Decision,
@@ -17,6 +21,17 @@ from .models import (
     Product,
     ProofPoint,
 )
+
+NODE_MODELS = {
+    "Product": Product,
+    "Feature": Feature,
+    "ProofPoint": ProofPoint,
+    "Persona": Persona,
+    "ICPSegment": ICPSegment,
+    "Person": Person,
+    "EmailThread": EmailThread,
+    "Decision": Decision,
+}
 
 
 def utc_now() -> str:
@@ -266,16 +281,106 @@ class RuleBasedExtractor(BaseExtractor):
 
 
 class ConfigurableLLMExtractor(BaseExtractor):
-    def __init__(self, provider: str, model_name: str, api_key: str):
+    def __init__(self, provider: str, model_name: str, api_key: str, max_attempts: int = 2):
         self.provider = provider
         self.model_name = model_name
         self.api_key = api_key
+        self.max_attempts = max_attempts
 
     def extract(self, document: SourceDocumentInput) -> ExtractionPayload:
-        raise RuntimeError(
-            "LLM extraction is configured but no provider adapter is implemented yet. "
-            "Use EXTRACTION_PROVIDER=rule-based for local tests."
+        if not self.api_key:
+            raise RuntimeError("LLM_API_KEY is required for EXTRACTION_PROVIDER=llm")
+        last_error: Exception | None = None
+        for attempt in range(1, self.max_attempts + 1):
+            try:
+                text = self._generate(document, attempt=attempt, previous_error=str(last_error) if last_error else "")
+                return ensure_edge_endpoints(parse_llm_payload(text))
+            except Exception as exc:
+                last_error = exc
+        raise RuntimeError(f"LLM extraction returned malformed structured output after {self.max_attempts} attempts: {last_error}") from last_error
+
+    def _generate(self, document: SourceDocumentInput, attempt: int, previous_error: str) -> str:
+        if self.provider == "gemini":
+            return self._generate_gemini(document, attempt, previous_error)
+        raise RuntimeError(f"Unsupported LLM_PROVIDER: {self.provider}")
+
+    def _generate_gemini(self, document: SourceDocumentInput, attempt: int, previous_error: str) -> str:
+        try:
+            from google import genai  # type: ignore
+        except ImportError as exc:
+            raise RuntimeError("Install google-genai to use LLM_PROVIDER=gemini") from exc
+
+        client = genai.Client(api_key=self.api_key)
+        response = client.models.generate_content(
+            model=self.model_name,
+            contents=build_llm_prompt(document, attempt=attempt, previous_error=previous_error),
+            config={"response_mime_type": "application/json"},
         )
+        text = getattr(response, "text", None)
+        if not text:
+            raise RuntimeError("LLM response did not include text")
+        return text
+
+
+def build_llm_prompt(document: SourceDocumentInput, attempt: int = 1, previous_error: str = "") -> str:
+    retry_note = f"\nPrevious validation error: {previous_error}\nReturn corrected JSON only." if previous_error else ""
+    return f"""Extract Analytos Brain graph knowledge from this source document.
+
+Return strict JSON with this shape:
+{{
+  "nodes": [
+    {{"type": "Product|Feature|ProofPoint|Persona|ICPSegment|Person|EmailThread|Decision", "data": {{...}}}}
+  ],
+  "edges": [
+    {{"edge": "HasFeature|ProvenBy|SupportedBy|Targets|HasPersona|Discusses|DiscussedIn|DecidedBy", "from": "slug", "to": "slug", "source_document_id": "{document.slug}", "source_file": "{document.file_name}", "source_excerpt": "short quote or summary", "confidence": "0.00-1.00"}}
+  ]
+}}
+
+Rules:
+- Use deterministic lowercase slugs with the existing type prefix, for example product:stockly.
+- Preserve provenance on every node and edge using source_document_id, source_file, source_excerpt, confidence, visibility.
+- Email-derived material must be visibility internal.
+- ProofPoint.approved_for_external_use must be "true" only when the source explicitly approves external use.
+- Do not invent unsupported node or edge types.
+- Do not include SourceDocument, ExtractionRun, or Processed; the ingestion pipeline adds run metadata.
+- Return JSON only, no Markdown fences.
+{retry_note}
+
+Source file: {document.file_name}
+Source title: {document.title}
+Attempt: {attempt}
+
+Document:
+{document.content}
+"""
+
+
+def parse_llm_payload(text: str) -> ExtractionPayload:
+    raw = json.loads(_extract_json(text))
+    if not isinstance(raw, dict):
+        raise ValueError("LLM output must be a JSON object")
+    nodes = [_parse_llm_node(item) for item in raw.get("nodes", [])]
+    edges = [GraphEdge.model_validate(item) for item in raw.get("edges", [])]
+    return ExtractionPayload(nodes=nodes, edges=edges)
+
+
+def _extract_json(text: str) -> str:
+    stripped = text.strip()
+    fence = re.match(r"^```(?:json)?\s*(.*?)\s*```$", stripped, re.DOTALL)
+    return fence.group(1) if fence else stripped
+
+
+def _parse_llm_node(item: Any):
+    if not isinstance(item, dict):
+        raise ValueError("Node must be an object")
+    node_type = item.get("type") or item.get("node_type")
+    if node_type not in NODE_MODELS:
+        raise ValueError(f"Unsupported node type from LLM: {node_type!r}")
+    data = item.get("data") if "data" in item else {key: value for key, value in item.items() if key not in {"type", "node_type"}}
+    if not isinstance(data, dict):
+        raise ValueError("Node data must be an object")
+    data.pop("id", None)
+    return NODE_MODELS[node_type].model_validate(data)
 
 
 def build_extractor(provider: str, llm_provider: str = "", llm_model: str = "", llm_api_key: str = "") -> BaseExtractor:

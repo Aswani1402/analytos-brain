@@ -3,11 +3,17 @@ __pycache__/
 .venv/
 venv/
 node_modules/
+apps/dashboard/node_modules/
 .env
 .env.*
 !.env.example
 dist/
+apps/dashboard/dist/
 build/
+*.tsbuildinfo
+apps/dashboard/.env
+apps/dashboard/.env.*
+!apps/dashboard/.env.example
 data/
 .tmp/
 *.log

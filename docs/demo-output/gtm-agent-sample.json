@@ -25,7 +25,7 @@
         "baseline": null,
         "confidence": "0.90",
         "confidentiality_note": "Client name must remain confidential.",
-        "created_at": "2026-07-13T11:55:22.264897+00:00",
+        "created_at": "2026-07-13T12:17:06.554086+00:00",
         "customer_segment": null,
         "external_label": "anonymous customer",
         "id": "proof:inspectly:92-percent-extraction-accuracy",
@@ -39,7 +39,7 @@
         "source_excerpt": "92% first-pass dimension extraction accuracy.",
         "source_file": "inspectly-product-overview.md",
         "timeframe": null,
-        "updated_at": "2026-07-13T11:55:22.264901+00:00",
+        "updated_at": "2026-07-13T12:17:06.554088+00:00",
         "visibility": "external_approved"
       },
       "type": "ProofPoint"
@@ -50,7 +50,7 @@
         "baseline": null,
         "confidence": "0.90",
         "confidentiality_note": "Client name must remain confidential.",
-        "created_at": "2026-07-13T11:55:22.264857+00:00",
+        "created_at": "2026-07-13T12:17:06.554061+00:00",
         "customer_segment": null,
         "external_label": "anonymous customer",
         "id": "proof:inspectly:inspection-plan-under-20-minutes",
@@ -64,7 +64,7 @@
         "source_excerpt": "Inspection plan creation reduced from 4-6 hours per part to under 20 minutes.",
         "source_file": "inspectly-product-overview.md",
         "timeframe": null,
-        "updated_at": "2026-07-13T11:55:22.264860+00:00",
+        "updated_at": "2026-07-13T12:17:06.554063+00:00",
         "visibility": "external_approved"
       },
       "type": "ProofPoint"
@@ -75,7 +75,7 @@
         "baseline": null,
         "confidence": "0.90",
         "confidentiality_note": "Client name must remain confidential.",
-        "created_at": "2026-07-13T11:55:22.264924+00:00",
+        "created_at": "2026-07-13T12:17:06.554101+00:00",
         "customer_segment": null,
         "external_label": "anonymous customer",
         "id": "proof:inspectly:regulated-quality-context-support",
@@ -89,7 +89,7 @@
         "source_excerpt": "Supports ISO 13485 and AS9100 quality documentation contexts.",
         "source_file": "inspectly-product-overview.md",
         "timeframe": null,
-        "updated_at": "2026-07-13T11:55:22.264927+00:00",
+        "updated_at": "2026-07-13T12:17:06.554103+00:00",
         "visibility": "external_approved"
       },
       "type": "ProofPoint"
@@ -99,7 +99,7 @@
         "category": "Pull Kanban inventory intelligence for discrete manufacturing",
         "competitive_alternatives": null,
         "confidence": "0.90",
-        "created_at": "2026-07-13T11:55:20.320936+00:00",
+        "created_at": "2026-07-13T12:17:04.785859+00:00",
         "id": "product:stockly",
         "name": "Stockly",
         "owner": "Analytos Labs product team",
@@ -113,7 +113,7 @@
         "summary": "AI-driven Pull Kanban engine that right-sizes kanban loops and safety stock.",
         "target_buyer": null,
         "technical_stack": null,
-        "updated_at": "2026-07-13T11:55:20.320956+00:00",
+        "updated_at": "2026-07-13T12:17:04.785873+00:00",
         "visibility": "internal"
       },
       "type": "Product"
@@ -122,7 +122,7 @@
       "data": {
         "channel_notes": null,
         "confidence": "0.90",
-        "created_at": "2026-07-13T11:55:24.172538+00:00",
+        "created_at": "2026-07-13T12:17:08.157258+00:00",
         "disqualifiers": "Process manufacturing, revenue under $30M, Fortune 500, homegrown ERP without API access",
         "employee_range": "100-2,000",
         "erp_footprint": "NetSuite or SAP Business One preferred; Epicor/Infor acceptable",
@@ -139,7 +139,7 @@
         "source_file": "icp-analytos.md",
         "status": "active",
         "trigger_signals": "Kanban on cards or Excel, working-capital pressure, hiring planners or quality engineers, ISO 13485/AS9100, NetStock evaluation or churn",
-        "updated_at": "2026-07-13T11:55:24.172557+00:00",
+        "updated_at": "2026-07-13T12:17:08.157270+00:00",
         "value_framing": null,
         "visibility": "internal"
       },
@@ -149,7 +149,7 @@
       "data": {
         "cares_about": "EBITDA, capex vs opex, risk",
         "confidence": "0.90",
-        "created_at": "2026-07-13T11:55:24.172709+00:00",
+        "created_at": "2026-07-13T12:17:08.157378+00:00",
         "economic_role": null,
         "id": "persona:cfo-pe-operating-partner",
         "losing_message": null,
@@ -160,7 +160,7 @@
         "source_document_id": "source-document:icp-analytos-md:381c2eb86f8b",
         "source_excerpt": "CFO / PE Operating Partner persona",
         "source_file": "icp-analytos.md",
-        "updated_at": "2026-07-13T11:55:24.172712+00:00",
+        "updated_at": "2026-07-13T12:17:08.157381+00:00",
         "visibility": "internal",
         "winning_message": "Working capital release plus perpetual license, 2-week POC proof"
       },

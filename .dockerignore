@@ -1,0 +1,13 @@
+.git
+.pytest_cache
+.tmp
+.venv
+__pycache__
+*.pyc
+apps/dashboard/node_modules
+apps/dashboard/dist
+data
+omnigraph/graphs
+omnigraph/__cluster__
+node_modules
+*.log

@@ -1,8 +1,8 @@
 {
-  "search_context_stockly": "returned Product, Feature, and externally approved ProofPoint records from main",
-  "get_product": "returned product:stockly",
-  "get_product_proof_points": "returned externally approved proof points only",
+  "search_context_stockly": "returned approved Stockly Product, Feature, and externally approved ProofPoint records from real main",
+  "get_product": "returned product:stockly from real main",
+  "get_product_proof_points": "returned externally approved ProofPoint records only",
   "get_icp_segments": "returned ICP records for gtm-agent",
   "get_personas": "returned Persona records for gtm-agent",
-  "content_agent_email_thread_search": "returned empty records for internal email query"
+  "content_agent_email_thread_search": "returned empty records for internal EmailThread query"
 }

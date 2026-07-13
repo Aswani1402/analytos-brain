@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .config import load_api_settings
 from .database import init_db
-from .routers import agents, changes, entities, health, ingestion, reviews, search
+from .routers import agents, changes, entities, health, ingestion, mcp_http, reviews, search
 from .services.audit_service import AuditService
 from .services.diff_service import DiffService
 from .services.ingestion_service import IngestionService
@@ -45,7 +45,7 @@ def create_app() -> FastAPI:
         allow_origins=list(initial_settings.cors_origins),
         allow_credentials=False,
         allow_methods=["GET", "POST", "OPTIONS"],
-        allow_headers=["Content-Type"],
+        allow_headers=["Authorization", "Content-Type"],
     )
 
     app.include_router(health.router)
@@ -55,6 +55,7 @@ def create_app() -> FastAPI:
     app.include_router(search.router)
     app.include_router(changes.router)
     app.include_router(agents.router)
+    app.include_router(mcp_http.router)
     return app
 
 

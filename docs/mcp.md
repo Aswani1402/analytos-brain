@@ -43,7 +43,7 @@ Claude Desktop-style command:
     "analytos-brain": {
       "command": "python",
       "args": ["-m", "mcp.server"],
-      "cwd": "C:\\Users\\Aswini_Ayappan\\OneDrive\\Desktop\\project\\analytos-brain"
+      "cwd": "<repo path>"
     }
   }
 }
@@ -62,3 +62,34 @@ python -m mcp.server --tool search_context --actor content-agent --query "Stockl
 
 The final command returns no records because internal EmailThread context is
 filtered out for `content-agent`.
+
+## Hosted Streamable HTTP
+
+FastAPI exposes a hosted JSON-RPC MCP endpoint at:
+
+```text
+/mcp
+```
+
+Authentication is required. Set:
+
+```text
+ANALYTOS_MCP_TOKENS_JSON={"opaque-token":"content-agent","another-token":"gtm-agent"}
+```
+
+The hosted endpoint resolves the actor from the bearer token and ignores any
+client-supplied `actor` argument.
+
+Smoke test:
+
+```powershell
+python scripts\mcp_http_smoke.py --base-url https://<backend> --token <content-agent-mcp-token>
+```
+
+Supported JSON-RPC methods:
+
+- `initialize`
+- `tools/list`
+- `tools/call`
+
+The stdio wrapper remains available for local Claude Desktop/Claude Code use.

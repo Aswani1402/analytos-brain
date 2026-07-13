@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from fastapi import APIRouter, Depends, HTTPException
 
+from ..auth import require_api_token
 from ..dependencies import get_omnigraph_service
 from ..services.omnigraph_service import OmnigraphService
 
@@ -63,12 +64,12 @@ def personas(omnigraph: OmnigraphService = Depends(get_omnigraph_service)):
 
 
 @router.get("/people")
-def people(omnigraph: OmnigraphService = Depends(get_omnigraph_service)):
+def people(_auth: None = Depends(require_api_token), omnigraph: OmnigraphService = Depends(get_omnigraph_service)):
     return _records_for_type(omnigraph, "Person")
 
 
 @router.get("/email-threads")
-def email_threads(omnigraph: OmnigraphService = Depends(get_omnigraph_service)):
+def email_threads(_auth: None = Depends(require_api_token), omnigraph: OmnigraphService = Depends(get_omnigraph_service)):
     return _records_for_type(omnigraph, "EmailThread")
 
 

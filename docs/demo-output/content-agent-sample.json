@@ -26,7 +26,7 @@
         "baseline": null,
         "confidence": "0.90",
         "confidentiality_note": "Client name must remain confidential.",
-        "created_at": "2026-07-13T11:55:22.264897+00:00",
+        "created_at": "2026-07-13T12:17:06.554086+00:00",
         "customer_segment": null,
         "external_label": "anonymous customer",
         "id": "proof:inspectly:92-percent-extraction-accuracy",
@@ -40,7 +40,7 @@
         "source_excerpt": "92% first-pass dimension extraction accuracy.",
         "source_file": "inspectly-product-overview.md",
         "timeframe": null,
-        "updated_at": "2026-07-13T11:55:22.264901+00:00",
+        "updated_at": "2026-07-13T12:17:06.554088+00:00",
         "visibility": "external_approved"
       },
       "type": "ProofPoint"
@@ -51,7 +51,7 @@
         "baseline": null,
         "confidence": "0.90",
         "confidentiality_note": "Client name must remain confidential.",
-        "created_at": "2026-07-13T11:55:22.264857+00:00",
+        "created_at": "2026-07-13T12:17:06.554061+00:00",
         "customer_segment": null,
         "external_label": "anonymous customer",
         "id": "proof:inspectly:inspection-plan-under-20-minutes",
@@ -65,7 +65,7 @@
         "source_excerpt": "Inspection plan creation reduced from 4-6 hours per part to under 20 minutes.",
         "source_file": "inspectly-product-overview.md",
         "timeframe": null,
-        "updated_at": "2026-07-13T11:55:22.264860+00:00",
+        "updated_at": "2026-07-13T12:17:06.554063+00:00",
         "visibility": "external_approved"
       },
       "type": "ProofPoint"
@@ -76,7 +76,7 @@
         "baseline": null,
         "confidence": "0.90",
         "confidentiality_note": "Client name must remain confidential.",
-        "created_at": "2026-07-13T11:55:22.264924+00:00",
+        "created_at": "2026-07-13T12:17:06.554101+00:00",
         "customer_segment": null,
         "external_label": "anonymous customer",
         "id": "proof:inspectly:regulated-quality-context-support",
@@ -90,7 +90,7 @@
         "source_excerpt": "Supports ISO 13485 and AS9100 quality documentation contexts.",
         "source_file": "inspectly-product-overview.md",
         "timeframe": null,
-        "updated_at": "2026-07-13T11:55:22.264927+00:00",
+        "updated_at": "2026-07-13T12:17:06.554103+00:00",
         "visibility": "external_approved"
       },
       "type": "ProofPoint"

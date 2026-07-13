@@ -1,8 +1,38 @@
 FROM python:3.12-slim
 
 WORKDIR /app
+ARG OMNIGRAPH_VERSION=0.8.1
+ARG TARGETARCH
+ENV OMNIGRAPH_BIN=/usr/local/bin/omnigraph
+ENV OMNIGRAPH_SERVER_BIN=/usr/local/bin/omnigraph-server
+
+RUN apt-get update; apt-get install -y --no-install-recommends curl ca-certificates bash tar gzip; rm -rf /var/lib/apt/lists/*
+
+RUN set -eu; \
+    case "${TARGETARCH:-amd64}" in \
+      amd64) asset_arch="x86_64" ;; \
+      arm64) asset_arch="arm64" ;; \
+      *) echo "Unsupported Docker TARGETARCH '${TARGETARCH}'. Omnigraph v${OMNIGRAPH_VERSION} image supports linux/amd64 and linux/arm64 only." >&2; exit 1 ;; \
+    esac; \
+    asset="omnigraph-linux-${asset_arch}.tar.gz"; \
+    checksum="omnigraph-linux-${asset_arch}.sha256"; \
+    base_url="https://github.com/ModernRelay/omnigraph/releases/download/v${OMNIGRAPH_VERSION}"; \
+    workdir="$(mktemp -d)"; \
+    curl -fsSL "${base_url}/${asset}" -o "${workdir}/${asset}"; \
+    curl -fsSL "${base_url}/${checksum}" -o "${workdir}/${checksum}"; \
+    expected="$(awk '{print $1}' "${workdir}/${checksum}")"; \
+    actual="$(sha256sum "${workdir}/${asset}" | awk '{print $1}')"; \
+    if [ "${actual}" != "${expected}" ]; then echo "Checksum verification failed for ${asset}" >&2; exit 1; fi; \
+    tar -C "${workdir}" -xzf "${workdir}/${asset}"; \
+    install -m 0755 "${workdir}/omnigraph" "${OMNIGRAPH_BIN}"; \
+    install -m 0755 "${workdir}/omnigraph-server" "${OMNIGRAPH_SERVER_BIN}"; \
+    rm -rf "${workdir}"; \
+    "${OMNIGRAPH_BIN}" version; \
+    "${OMNIGRAPH_SERVER_BIN}" --version
+
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
+RUN chmod +x scripts/start-hosted.sh
 EXPOSE 8000
-CMD ["python", "-m", "uvicorn", "apps.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["bash", "scripts/start-hosted.sh"]

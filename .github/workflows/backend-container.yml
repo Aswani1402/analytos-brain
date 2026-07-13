@@ -1,0 +1,26 @@
+name: Backend Container Smoke
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  backend-container:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build backend image
+        run: docker build -f Dockerfile.api -t analytos-brain-api:smoke .
+
+      - name: Verify Omnigraph binaries
+        run: |
+          docker run --rm analytos-brain-api:smoke omnigraph version
+          docker run --rm analytos-brain-api:smoke omnigraph-server --version
+
+      - name: Verify FastAPI import
+        run: docker run --rm analytos-brain-api:smoke python -c "from apps.api.main import create_app; app = create_app(); print(app.title)"

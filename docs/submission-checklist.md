@@ -34,3 +34,21 @@ branch actions. Fine-grained node-type restrictions such as denied EmailThread
 reads are enforced by `apps/api/access_control.py` and MCP record filtering.
 
 Hosted deployment is prepared but not performed in this local verification pass.
+The backend container is configured to install and verify Omnigraph v0.8.1
+inside the image; the first real Docker build should be confirmed in GitHub
+Actions or Railway because Docker is not installed locally.
+
+## Railway Variables Checklist
+
+- `ANALYTOS_DB_PATH`
+- `INGEST_OUTPUT_DIR`
+- `OMNIGRAPH_CLUSTER`
+- `OMNIGRAPH_GRAPH_URI`
+- `OMNIGRAPH_BIN`
+- `OMNIGRAPH_SERVER_BIN`
+- `OMNIGRAPH_TEMPLATE`
+- `ANALYTOS_START_OMNIGRAPH_SERVER`
+- `ANALYTOS_API_TOKEN`
+- `ANALYTOS_MCP_TOKENS_JSON`
+- `ANALYTOS_CORS_ORIGINS`
+- `VITE_API_BASE_URL`

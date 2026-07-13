@@ -44,6 +44,8 @@ def main() -> None:
         "asset_arch=\"arm64\"",
         "/usr/local/bin/omnigraph",
         "/usr/local/bin/omnigraph-server",
+        "omnigraph-server.bin",
+        "exec /usr/local/bin/omnigraph-server.bin",
         "sha256sum",
         "OMNIGRAPH_BIN",
         "version",

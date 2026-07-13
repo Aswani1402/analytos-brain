@@ -107,8 +107,12 @@ It does not overwrite an existing persistent cluster/runtime or graph.
 
 Important: `Dockerfile.api` downloads the official
 `ModernRelay/omnigraph` v0.8.1 Linux release asset for the build architecture,
-checks the published `.sha256` file, installs `omnigraph` and
-`omnigraph-server` into `/usr/local/bin`, marks them executable, and runs:
+checks the published `.sha256` file, installs `omnigraph` into
+`/usr/local/bin`, installs the upstream server binary as
+`/usr/local/bin/omnigraph-server.bin`, and installs a small
+`/usr/local/bin/omnigraph-server` wrapper that supports `--version` before
+delegating normal server arguments to the upstream binary. The build marks them
+executable and runs:
 
 ```text
 omnigraph version

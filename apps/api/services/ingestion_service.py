@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import sqlite3
 import uuid
@@ -20,6 +21,7 @@ from pipeline.jsonl_writer import write_jsonl
 from pipeline.models import ExtractionPayload
 
 from ..config import ApiSettings
+from ..access_control import require_allowed
 from ..database import connect, row_to_dict, rows_to_dicts
 from ..models import STATUS_FAILED, STATUS_PENDING_REVIEW
 from .audit_service import AuditService
@@ -61,6 +63,7 @@ class IngestionService:
 
     def create_ingestion(self, source_path: str, actor: str, extraction_provider: str) -> dict[str, Any]:
         validate_actor(actor)
+        require_allowed(actor, "create_ingestion_branch", branch="ingestion")
         if extraction_provider not in {"rule-based", "mock", "llm"}:
             raise HTTPException(status_code=400, detail="Unsupported extraction provider")
         document_path = self.validate_source_path(source_path)
@@ -71,7 +74,12 @@ class IngestionService:
         created_at = utc_now()
 
         try:
-            extractor = build_extractor(extraction_provider)
+            extractor = build_extractor(
+                extraction_provider,
+                llm_provider=os.getenv("LLM_PROVIDER", ""),
+                llm_model=os.getenv("LLM_MODEL", ""),
+                llm_api_key=os.getenv("LLM_API_KEY", ""),
+            )
             existing_nodes = self._existing_product_feature_nodes()
             payload = add_run_metadata(
                 extractor.extract(document),

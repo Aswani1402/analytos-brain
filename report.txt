@@ -1,0 +1,147 @@
+ANALYTOS BRAIN DASHBOARD REPORT
+
+1. OVERALL STATUS
+
+PASS. The React + TypeScript + Vite dashboard was built and verified against the existing FastAPI backend. The dashboard does not duplicate graph knowledge in frontend files or browser storage. It reads approved main through the API and sends ingestion/review actions to the backend.
+
+2. DASHBOARD PAGES BUILT
+
+Built routes:
+/ overview
+/entities entity browser
+/products product list
+/products/:slug product detail
+/search approved-main search
+/reviews pending reviews
+/reviews/:runId review detail with diff and approve/reject actions
+/changes recent changes
+/agents/content Content Agent placeholder wired to POST /agents/content
+/agents/gtm GTM Agent placeholder wired to POST /agents/gtm
+
+3. API INTEGRATION
+
+Implemented a typed fetch client with VITE_API_BASE_URL defaulting to http://127.0.0.1:8000, request timeout handling, safe JSON parsing, and clear API errors. No secrets or auth tokens are hardcoded.
+
+Added safe development CORS in the FastAPI backend for http://localhost:5173 and http://127.0.0.1:5173, configurable through ANALYTOS_CORS_ORIGINS.
+
+4. INGESTION UI
+
+The overview page provides POST /ingestions with source path, actor, and extraction provider inputs. It includes quick-select buttons for the five seed file paths only, not seed contents. Verified ingestion against a temporary test graph created a pending_review run and a separate ingestion branch.
+
+5. REVIEW UI
+
+The reviews page calls GET /reviews. The review detail page calls GET /reviews/{run_id}, displays source metadata, counts, source document text, and separate sections for added, changed, and removed nodes and edges. Internal Omnigraph id fields are hidden.
+
+6. APPROVAL AND REJECTION UI
+
+The review detail page posts to POST /reviews/{run_id}/approve and POST /reviews/{run_id}/reject. It uses reviewer-demo as a portable default, requires a non-empty rejection reason, shows confirmation dialogs, disables actions while processing, and disables decisions once the run is no longer pending_review.
+
+7. ENTITY BROWSER
+
+The entity browser supports Products, Features, Proof Points, ICP Segments, Personas, People, Email Threads, and Decisions using the approved-main entity endpoints. Product detail combines product, features, proof points, and ICP segments and works when relationship groups are empty.
+
+8. SEARCH
+
+The search page calls GET /search?q=<text>. It searches through the backend only, displays node type, slug, matched text, visibility, and provenance, and includes loading, empty, and error states.
+
+9. RECENT CHANGES
+
+The recent changes page calls GET /changes/recent and displays workflow audit actions and any Omnigraph commit data returned by the backend.
+
+10. AGENT PAGES
+
+Content Agent and GTM Agent pages are present and wired to POST /agents/content and POST /agents/gtm. They show a clear "Agent backend not yet implemented" state on 404 and do not fabricate results.
+
+11. FILES CREATED
+
+apps/dashboard/.env.example
+apps/dashboard/index.html
+apps/dashboard/package-lock.json
+apps/dashboard/package.json
+apps/dashboard/scripts/build.mjs
+apps/dashboard/src/App.tsx
+apps/dashboard/src/api/client.ts
+apps/dashboard/src/api/types.ts
+apps/dashboard/src/components/AppLayout.tsx
+apps/dashboard/src/components/DiffSection.tsx
+apps/dashboard/src/components/EmptyState.tsx
+apps/dashboard/src/components/EntityCard.tsx
+apps/dashboard/src/components/ErrorState.tsx
+apps/dashboard/src/components/LoadingState.tsx
+apps/dashboard/src/components/ProvenancePanel.tsx
+apps/dashboard/src/components/Sidebar.tsx
+apps/dashboard/src/components/StatusBadge.tsx
+apps/dashboard/src/main.tsx
+apps/dashboard/src/pages/ContentAgentPage.tsx
+apps/dashboard/src/pages/EntityBrowserPage.tsx
+apps/dashboard/src/pages/GTMAgentPage.tsx
+apps/dashboard/src/pages/NotFoundPage.tsx
+apps/dashboard/src/pages/OverviewPage.tsx
+apps/dashboard/src/pages/ProductDetailPage.tsx
+apps/dashboard/src/pages/ProductsPage.tsx
+apps/dashboard/src/pages/RecentChangesPage.tsx
+apps/dashboard/src/pages/ReviewDetailPage.tsx
+apps/dashboard/src/pages/ReviewsPage.tsx
+apps/dashboard/src/pages/SearchPage.tsx
+apps/dashboard/src/styles/global.css
+apps/dashboard/src/vite-env.d.ts
+apps/dashboard/tsconfig.json
+apps/dashboard/vite.config.ts
+docs/dashboard.md
+report.txt
+
+12. FILES MODIFIED
+
+.gitignore
+README.md
+apps/api/config.py
+apps/api/main.py
+
+13. NPM INSTALL RESULT
+
+PASS. npm install completed in apps/dashboard. Result: 73 packages added, 74 packages audited, 0 vulnerabilities.
+
+14. DASHBOARD BUILD RESULT
+
+PASS. npm run build completed successfully in apps/dashboard. TypeScript compilation and Vite production build both passed.
+
+15. BACKEND TEST RESULT
+
+PASS. python -m pytest -q --basetemp .tmp\pytest-dashboard was run twice.
+Run 1: 38 passed, 1 PytestCacheWarning for .pytest_cache permission.
+Run 2: 38 passed, 1 PytestCacheWarning for .pytest_cache permission.
+
+16. LIVE SMOKE TEST
+
+PASS. Started FastAPI and Vite temporarily. Verified HTTP 200 responses for:
+GET /health
+GET /openapi.json
+GET /reviews
+GET /entities/products
+GET /search?q=Stockly
+GET dashboard /
+GET dashboard /reviews
+GET dashboard /entities
+
+Submitted POST /ingestions against a temporary Omnigraph graph under .tmp/dashboard-smoke. Result: pending_review branch ing-20260713100310699577-stockly-prod-d802a84c-291af9b363d4. Temporary main remained empty. Temporary server processes were stopped.
+
+17. REAL MAIN GRAPH STATUS
+
+PASS. Real graph branch list returned only main. Real main snapshot showed zero rows for every node and edge table. Dashboard verification did not bypass HITL or load seed data into real main.
+
+18. REMAINING ASSIGNMENT WORK
+
+Production Content Agent backend
+Production GTM Agent backend
+MCP integration
+Cedar policies
+Deployment
+Demo video workflow
+
+19. SAFE TO COMMIT?
+
+YES. The dashboard source, package-lock.json, backend CORS changes, docs, README update, and ignore-rule updates are verified. Do not commit ignored generated folders such as apps/dashboard/node_modules, apps/dashboard/dist, .tmp, or data.
+
+20. EXACT NEXT DEVELOPMENT STEP
+
+Implement POST /agents/content in the FastAPI backend using approved-main graph retrieval, then add backend and dashboard smoke coverage for that endpoint.

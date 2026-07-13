@@ -1,0 +1,36 @@
+# Submission Checklist
+
+## Links
+
+- GitHub repository URL: `[paste GitHub URL]`
+- Hosted dashboard URL: `[paste hosted dashboard URL]`
+- Hosted MCP URL: `[paste hosted MCP URL]`
+- Credentials: `[paste demo credentials or access instructions]`
+- Demo video URL: `[paste demo video URL]`
+- Resume Drive URL: `[paste resume Drive URL]`
+
+## Email
+
+- Recipient emails: `[paste required recipient emails]`
+- Subject line: `Analytos Brain Assignment Submission - Aswini Ayappan`
+
+## Five-Minute Demo Sequence
+
+1. Open README and explain the governed architecture.
+2. Show `/health` and dashboard overview.
+3. Show five seed documents were ingested through review branches.
+4. Show review diff and reviewer attribution with `reviewer-demo`.
+5. Show approved `main` graph snapshot counts.
+6. Run Content Agent and show three approved facts, graph slugs, and sources.
+7. Run GTM Agent and show ICP, persona, proof points, and illustrative companies.
+8. Run MCP `search_context` and a denied internal email search.
+9. Show access-control tests and native policy validation.
+10. Show deployment docs and state what remains before hosted production.
+
+## Known Limitation Disclosure
+
+Omnigraph 0.8.1 native policy is configured and validates for coarse graph and
+branch actions. Fine-grained node-type restrictions such as denied EmailThread
+reads are enforced by `apps/api/access_control.py` and MCP record filtering.
+
+Hosted deployment is prepared but not performed in this local verification pass.

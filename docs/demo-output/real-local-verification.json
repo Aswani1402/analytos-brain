@@ -1,0 +1,237 @@
+{
+  "after_snapshot": "branch: main\nmanifest_version: 8\ninternal_schema_version: 4\nedge:DecidedBy v3 branch=main rows=6\nedge:DiscussedIn v3 branch=main rows=6\nedge:Discusses v3 branch=main rows=2\nedge:HasFeature v6 branch=main rows=11\nedge:HasPersona v2 branch=main rows=5\nedge:Processed v9 branch=main rows=5\nedge:ProvenBy v6 branch=main rows=6\nedge:SupportedBy v3 branch=main rows=2\nedge:Targets v2 branch=main rows=4\nnode:Decision v3 branch=main rows=6\nnode:EmailThread v3 branch=main rows=2\nnode:ExtractionRun v16 branch=main rows=5\nnode:Feature v12 branch=main rows=11\nnode:ICPSegment v2 branch=main rows=2\nnode:Person v3 branch=main rows=3\nnode:Persona v2 branch=main rows=4\nnode:Product v11 branch=main rows=2\nnode:ProofPoint v13 branch=main rows=8\nnode:SourceDocument v14 branch=main rows=5\n",
+  "approved_runs": [
+    {
+      "branch_name": "ing-20260713115520153893-stockly-prod-d802a84c-e6f0bcf36b17",
+      "reviewer_actor": "reviewer-demo",
+      "run_id": "run-58ab559e49744729"
+    },
+    {
+      "branch_name": "ing-20260713115522089209-inspectly-pr-726e20ba-b12c5e81d2ab",
+      "reviewer_actor": "reviewer-demo",
+      "run_id": "run-dc58eb23973a4831"
+    },
+    {
+      "branch_name": "ing-20260713115524019704-icp-analytos-381c2eb8-81a6458becee-rebased",
+      "reviewer_actor": "reviewer-demo",
+      "run_id": "run-a2d0036d967d4e0b"
+    },
+    {
+      "branch_name": "ing-20260713115525803634-email-01-sto-5019d1d0-af2ceca19b52-rebased",
+      "reviewer_actor": "reviewer-demo",
+      "run_id": "run-1af89ece502340ab"
+    },
+    {
+      "branch_name": "ing-20260713115528626028-email-02-ins-574b5935-13f63a7e672c-rebased",
+      "reviewer_actor": "reviewer-demo",
+      "run_id": "run-afd61c46d00c4023"
+    }
+  ],
+  "before_snapshot": "branch: main\nmanifest_version: 3\ninternal_schema_version: 4\nedge:DecidedBy v1 branch=main rows=0\nedge:DiscussedIn v1 branch=main rows=0\nedge:Discusses v1 branch=main rows=0\nedge:HasFeature v1 branch=main rows=0\nedge:HasPersona v1 branch=main rows=0\nedge:Processed v1 branch=main rows=0\nedge:ProvenBy v1 branch=main rows=0\nedge:SupportedBy v1 branch=main rows=0\nedge:Targets v1 branch=main rows=0\nnode:Decision v1 branch=main rows=0\nnode:EmailThread v1 branch=main rows=0\nnode:ExtractionRun v1 branch=main rows=0\nnode:Feature v1 branch=main rows=0\nnode:ICPSegment v1 branch=main rows=0\nnode:Person v1 branch=main rows=0\nnode:Persona v1 branch=main rows=0\nnode:Product v1 branch=main rows=0\nnode:ProofPoint v1 branch=main rows=0\nnode:SourceDocument v1 branch=main rows=0\n",
+  "branches_after_approval": [
+    "ing-20260713115520153893-stockly-prod-d802a84c-e6f0bcf36b17",
+    "ing-20260713115522089209-inspectly-pr-726e20ba-b12c5e81d2ab",
+    "ing-20260713115524019704-icp-analytos-381c2eb8-81a6458becee",
+    "ing-20260713115524019704-icp-analytos-381c2eb8-81a6458becee-rebased",
+    "ing-20260713115525803634-email-01-sto-5019d1d0-af2ceca19b52",
+    "ing-20260713115525803634-email-01-sto-5019d1d0-af2ceca19b52-rebased",
+    "ing-20260713115528626028-email-02-ins-574b5935-13f63a7e672c",
+    "ing-20260713115528626028-email-02-ins-574b5935-13f63a7e672c-rebased",
+    "ing-20260713115545473130-stockly-prod-d802a84c-89a77f4ef34f",
+    "main"
+  ],
+  "branches_before_approval": [
+    "ing-20260713115520153893-stockly-prod-d802a84c-e6f0bcf36b17",
+    "ing-20260713115522089209-inspectly-pr-726e20ba-b12c5e81d2ab",
+    "ing-20260713115524019704-icp-analytos-381c2eb8-81a6458becee",
+    "ing-20260713115525803634-email-01-sto-5019d1d0-af2ceca19b52",
+    "ing-20260713115528626028-email-02-ins-574b5935-13f63a7e672c",
+    "main"
+  ],
+  "commit_list": "{\n  \"commits\": [\n    {\n      \"graph_commit_id\": \"01KXBRH87V0X6DPDB9MT6PFYZJ\",\n      \"manifest_branch\": null,\n      \"manifest_version\": 1,\n      \"parent_commit_id\": null,\n      \"merged_parent_commit_id\": null,\n      \"actor_id\": null,\n      \"created_at\": 1783879999739285\n    },\n    {\n      \"graph_commit_id\": \"01KXDNA7ARTZDVJ0D4B4S5ZAYZ\",\n      \"manifest_branch\": null,\n      \"manifest_version\": 4,\n      \"parent_commit_id\": \"01KXBRH87V0X6DPDB9MT6PFYZJ\",\n      \"merged_parent_commit_id\": \"01KXDN9X1AFV42KDA2R6QPTM2B\",\n      \"actor_id\": \"reviewer-demo\",\n      \"created_at\": 1783943732568536\n    },\n    {\n      \"graph_commit_id\": \"01KXDNA9BGBYZGB4GM5AA6EJPN\",\n      \"manifest_branch\": null,\n      \"manifest_version\": 5,\n      \"parent_commit_id\": \"01KXDNA7ARTZDVJ0D4B4S5ZAYZ\",\n      \"merged_parent_commit_id\": \"01KXDN9YXSMKBG0HHR7G65F96E\",\n      \"actor_id\": \"reviewer-demo\",\n      \"created_at\": 1783943734640270\n    },\n    {\n      \"graph_commit_id\": \"01KXDNAC0R491K8NSFNGE71AMB\",\n      \"manifest_branch\": null,\n      \"manifest_version\": 6,\n      \"parent_commit_id\": \"01KXDNA9BGBYZGB4GM5AA6EJPN\",\n      \"merged_parent_commit_id\": \"01KXDNABCGRT89D9B8N97DJSVT\",\n      \"actor_id\": \"reviewer-demo\",\n      \"created_at\": 1783943737368738\n    },\n    {\n      \"graph_commit_id\": \"01KXDNAFNX8XM7YA7VKK6ATCMY\",\n      \"manifest_branch\": null,\n      \"manifest_version\": 7,\n      \"parent_commit_id\": \"01KXDNAC0R491K8NSFNGE71AMB\",\n      \"merged_parent_commit_id\": \"01KXDNAF2KCE3FP3BEHVXS9SVD\",\n      \"actor_id\": \"reviewer-demo\",\n      \"created_at\": 1783943741117260\n    },\n    {\n      \"graph_commit_id\": \"01KXDNAKC0HMDA6YKP24BDZX3D\",\n      \"manifest_branch\": null,\n      \"manifest_version\": 8,\n      \"parent_commit_id\": \"01KXDNAFNX8XM7YA7VKK6ATCMY\",\n      \"merged_parent_commit_id\": \"01KXDNAJPQPKTHZS2JSHAVPD6P\",\n      \"actor_id\": \"reviewer-demo\",\n      \"created_at\": 1783943744896769\n    }\n  ]\n}\n",
+  "content_summary": {
+    "facts_used": 3,
+    "graph_node_slugs": [
+      "proof:inspectly:92-percent-extraction-accuracy",
+      "proof:inspectly:inspection-plan-under-20-minutes",
+      "proof:inspectly:regulated-quality-context-support"
+    ],
+    "source_documents": [
+      "inspectly-product-overview.md"
+    ],
+    "status": 200
+  },
+  "dashboard_reader_denial": {
+    "body": {
+      "detail": "dashboard-reader cannot run Content Agent"
+    },
+    "status": 403
+  },
+  "diffs": [
+    {
+      "branch_name": "ing-20260713115520153893-stockly-prod-d802a84c-e6f0bcf36b17",
+      "counts": {
+        "by_edge_type": {
+          "HasFeature": 6,
+          "Processed": 1,
+          "ProvenBy": 3
+        },
+        "by_node_type": {
+          "ExtractionRun": 1,
+          "Feature": 6,
+          "Product": 1,
+          "ProofPoint": 3,
+          "SourceDocument": 1
+        },
+        "edges": 10,
+        "nodes": 12
+      },
+      "run_id": "run-58ab559e49744729"
+    },
+    {
+      "branch_name": "ing-20260713115522089209-inspectly-pr-726e20ba-b12c5e81d2ab",
+      "counts": {
+        "by_edge_type": {
+          "HasFeature": 5,
+          "Processed": 1,
+          "ProvenBy": 3
+        },
+        "by_node_type": {
+          "ExtractionRun": 1,
+          "Feature": 5,
+          "Product": 1,
+          "ProofPoint": 3,
+          "SourceDocument": 1
+        },
+        "edges": 9,
+        "nodes": 11
+      },
+      "run_id": "run-dc58eb23973a4831"
+    },
+    {
+      "branch_name": "ing-20260713115524019704-icp-analytos-381c2eb8-81a6458becee",
+      "counts": {
+        "by_edge_type": {
+          "HasPersona": 5,
+          "Processed": 1,
+          "Targets": 4
+        },
+        "by_node_type": {
+          "ExtractionRun": 1,
+          "ICPSegment": 2,
+          "Persona": 4,
+          "SourceDocument": 1
+        },
+        "edges": 10,
+        "nodes": 8
+      },
+      "run_id": "run-a2d0036d967d4e0b"
+    },
+    {
+      "branch_name": "ing-20260713115525803634-email-01-sto-5019d1d0-af2ceca19b52",
+      "counts": {
+        "by_edge_type": {
+          "DecidedBy": 3,
+          "DiscussedIn": 3,
+          "Discusses": 1,
+          "Processed": 1,
+          "SupportedBy": 1
+        },
+        "by_node_type": {
+          "Decision": 3,
+          "EmailThread": 1,
+          "ExtractionRun": 1,
+          "Person": 3,
+          "ProofPoint": 1,
+          "SourceDocument": 1
+        },
+        "edges": 9,
+        "nodes": 10
+      },
+      "run_id": "run-1af89ece502340ab"
+    },
+    {
+      "branch_name": "ing-20260713115528626028-email-02-ins-574b5935-13f63a7e672c",
+      "counts": {
+        "by_edge_type": {
+          "DecidedBy": 3,
+          "DiscussedIn": 3,
+          "Discusses": 1,
+          "Processed": 1,
+          "SupportedBy": 1
+        },
+        "by_node_type": {
+          "Decision": 3,
+          "EmailThread": 1,
+          "ExtractionRun": 1,
+          "ProofPoint": 1,
+          "SourceDocument": 1
+        },
+        "edges": 9,
+        "nodes": 7
+      },
+      "run_id": "run-afd61c46d00c4023"
+    }
+  ],
+  "final_snapshot": "branch: main\nmanifest_version: 9\ninternal_schema_version: 4\nedge:DecidedBy v3 branch=main rows=6\nedge:DiscussedIn v3 branch=main rows=6\nedge:Discusses v3 branch=main rows=2\nedge:HasFeature v6 branch=main rows=11\nedge:HasPersona v2 branch=main rows=5\nedge:Processed v10 branch=main rows=6\nedge:ProvenBy v6 branch=main rows=6\nedge:SupportedBy v3 branch=main rows=2\nedge:Targets v2 branch=main rows=4\nnode:Decision v3 branch=main rows=6\nnode:EmailThread v3 branch=main rows=2\nnode:ExtractionRun v17 branch=main rows=6\nnode:Feature v13 branch=main rows=11\nnode:ICPSegment v2 branch=main rows=2\nnode:Person v3 branch=main rows=3\nnode:Persona v2 branch=main rows=4\nnode:Product v12 branch=main rows=2\nnode:ProofPoint v14 branch=main rows=8\nnode:SourceDocument v15 branch=main rows=5\n",
+  "gtm_summary": {
+    "graph_node_slugs": [
+      "proof:inspectly:92-percent-extraction-accuracy",
+      "proof:inspectly:inspection-plan-under-20-minutes",
+      "proof:inspectly:regulated-quality-context-support",
+      "product:stockly",
+      "icp:mid-market-discrete-manufacturers",
+      "persona:cfo-pe-operating-partner"
+    ],
+    "illustrative_companies": [
+      {
+        "label": "illustrative/plausible example, not a graph fact",
+        "name": "Midwest Precision Components"
+      },
+      {
+        "label": "illustrative/plausible example, not a graph fact",
+        "name": "Southeast Medical Assemblies"
+      },
+      {
+        "label": "illustrative/plausible example, not a graph fact",
+        "name": "Great Lakes Industrial Equipment"
+      }
+    ],
+    "proof_points": 3,
+    "status": 200
+  },
+  "health": {
+    "api": {
+      "name": "analytos-brain-api",
+      "ok": true
+    },
+    "omnigraph": {
+      "branches": [
+        "main"
+      ],
+      "graph_uri": "C:\\Users\\Aswini_Ayappan\\OneDrive\\Desktop\\project\\analytos-brain\\omnigraph\\graphs\\knowledge.omni",
+      "ok": true,
+      "version": "omnigraph 0.8.1"
+    },
+    "sqlite": {
+      "ok": true,
+      "path": "C:\\Users\\Aswini_Ayappan\\OneDrive\\Desktop\\project\\analytos-brain\\data\\analytos_brain.db"
+    }
+  },
+  "pending_review_count": 5,
+  "repeat_approval": {
+    "branch_name": "ing-20260713115545473130-stockly-prod-d802a84c-89a77f4ef34f",
+    "reviewer_actor": "reviewer-demo",
+    "run_id": "run-6f78b0f0ccac426c"
+  },
+  "repeat_diff_counts": {
+    "by_edge_type": {
+      "Processed": 1
+    },
+    "by_node_type": {
+      "ExtractionRun": 1
+    },
+    "edges": 1,
+    "nodes": 1
+  }
+}

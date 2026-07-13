@@ -6,24 +6,32 @@ query list_products() {
     return {
         $product.slug,
         $product.name,
-        $product.description
+        $product.site_url,
+        $product.category,
+        $product.status,
+        $product.visibility,
+        $product.source_file
     }
 
     limit 50
 }
 
-query list_features() {
+query get_product($product_slug: String) {
     match {
-        $feature: Feature
+        $product: Product { slug: $product_slug }
     }
 
     return {
-        $feature.slug,
-        $feature.name,
-        $feature.description
+        $product.slug,
+        $product.name,
+        $product.site_url,
+        $product.category,
+        $product.status,
+        $product.visibility,
+        $product.source_file
     }
 
-    limit 50
+    limit 1
 }
 
 query get_product_features($product_slug: String) {
@@ -37,8 +45,251 @@ query get_product_features($product_slug: String) {
         $product.name,
         $feature.slug,
         $feature.name,
-        $feature.description
+        $feature.product_area,
+        $feature.feature_type,
+        $feature.status,
+        $feature.visibility
+    }
+
+    limit 100
+}
+
+query get_product_proof_points($product_slug: String) {
+    match {
+        $product: Product { slug: $product_slug }
+        $product provenBy $proof_point
+    }
+
+    return {
+        $product.slug,
+        $product.name,
+        $proof_point.slug,
+        $proof_point.name,
+        $proof_point.proof_type,
+        $proof_point.metric_name,
+        $proof_point.metric_value,
+        $proof_point.approved_for_external_use,
+        $proof_point.visibility
+    }
+
+    limit 100
+}
+
+query get_product_icp_segments($product_slug: String) {
+    match {
+        $product: Product { slug: $product_slug }
+        $product targets $icp_segment
+    }
+
+    return {
+        $product.slug,
+        $product.name,
+        $icp_segment.slug,
+        $icp_segment.name,
+        $icp_segment.segment_type,
+        $icp_segment.status,
+        $icp_segment.visibility
+    }
+
+    limit 100
+}
+
+query list_features() {
+    match {
+        $feature: Feature
+    }
+
+    return {
+        $feature.slug,
+        $feature.name,
+        $feature.product_area,
+        $feature.feature_type,
+        $feature.status,
+        $feature.visibility,
+        $feature.source_file
+    }
+
+    limit 100
+}
+
+query list_proof_points() {
+    match {
+        $proof_point: ProofPoint
+    }
+
+    return {
+        $proof_point.slug,
+        $proof_point.name,
+        $proof_point.proof_type,
+        $proof_point.metric_name,
+        $proof_point.metric_value,
+        $proof_point.approved_for_external_use,
+        $proof_point.visibility,
+        $proof_point.source_file
+    }
+
+    limit 100
+}
+
+query list_icp_segments() {
+    match {
+        $icp_segment: ICPSegment
+    }
+
+    return {
+        $icp_segment.slug,
+        $icp_segment.name,
+        $icp_segment.segment_type,
+        $icp_segment.revenue_range,
+        $icp_segment.employee_range,
+        $icp_segment.geography,
+        $icp_segment.status,
+        $icp_segment.visibility
     }
 
     limit 50
+}
+
+query list_personas() {
+    match {
+        $persona: Persona
+    }
+
+    return {
+        $persona.slug,
+        $persona.name,
+        $persona.role_in_deal,
+        $persona.product_focus,
+        $persona.cares_about,
+        $persona.winning_message,
+        $persona.visibility
+    }
+
+    limit 100
+}
+
+query list_people() {
+    match {
+        $person: Person
+    }
+
+    return {
+        $person.slug,
+        $person.name,
+        $person.email,
+        $person.organization,
+        $person.person_type,
+        $person.visibility
+    }
+
+    limit 100
+}
+
+query list_email_threads() {
+    match {
+        $email_thread: EmailThread
+    }
+
+    return {
+        $email_thread.slug,
+        $email_thread.subject,
+        $email_thread.thread_date,
+        $email_thread.status,
+        $email_thread.sensitivity,
+        $email_thread.visibility,
+        $email_thread.source_file
+    }
+
+    limit 100
+}
+
+query list_decisions() {
+    match {
+        $decision: Decision
+    }
+
+    return {
+        $decision.slug,
+        $decision.title,
+        $decision.decision_type,
+        $decision.status,
+        $decision.decision_date,
+        $decision.external_approval_status,
+        $decision.visibility,
+        $decision.source_file
+    }
+
+    limit 100
+}
+
+query list_source_documents() {
+    match {
+        $source_document: SourceDocument
+    }
+
+    return {
+        $source_document.slug,
+        $source_document.file_name,
+        $source_document.document_type,
+        $source_document.title,
+        $source_document.content_hash,
+        $source_document.visibility
+    }
+
+    limit 100
+}
+
+query list_extraction_runs() {
+    match {
+        $extraction_run: ExtractionRun
+    }
+
+    return {
+        $extraction_run.slug,
+        $extraction_run.branch_name,
+        $extraction_run.model_name,
+        $extraction_run.prompt_version,
+        $extraction_run.status,
+        $extraction_run.started_at,
+        $extraction_run.completed_at,
+        $extraction_run.source_count
+    }
+
+    limit 100
+}
+
+query search_entities($slug: String) {
+    match {
+        $product: Product { slug: $slug }
+    }
+
+    return {
+        $product.slug,
+        $product.name,
+        $product.category,
+        $product.status,
+        $product.visibility,
+        $product.source_file
+    }
+
+    limit 25
+}
+
+query recent_changes() {
+    match {
+        $extraction_run: ExtractionRun
+    }
+
+    return {
+        $extraction_run.slug,
+        $extraction_run.branch_name,
+        $extraction_run.model_name,
+        $extraction_run.prompt_version,
+        $extraction_run.status,
+        $extraction_run.started_at,
+        $extraction_run.completed_at,
+        $extraction_run.source_count
+    }
+
+    limit 25
 }

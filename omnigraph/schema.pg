@@ -1,23 +1,306 @@
-// Minimal Analytos Brain schema.
-// "id" is generated internally by Omnigraph.
-// "slug" is our stable business identifier.
+// Analytos Brain domain schema.
+// Omnigraph creates the internal id for every node and edge.
+// Deterministic business identity is held in slug and declared with @key(slug).
+// Controlled values such as visibility, status, and document_type are indexed strings
+// because Omnigraph 0.8.1 rejects enum syntax.
 
 node Product {
-    slug: String
+    slug: String @index
     name: String @index
-    description: String
+    site_url: String?
+    category: String? @index
+    owner: String?
+    status: String @index
+    summary: String?
+    positioning: String?
+    competitive_alternatives: String?
+    technical_stack: String?
+    target_buyer: String?
+    source_document_id: String? @index
+    source_file: String? @index
+    source_excerpt: String?
+    confidence: String?
+    visibility: String @index
+    created_at: String?
+    updated_at: String?
 
     @key(slug)
 }
 
 node Feature {
-    slug: String
+    slug: String @index
     name: String @index
-    description: String
+    product_area: String? @index
+    description: String?
+    feature_type: String? @index
+    status: String? @index
+    autonomy_level: String?
+    integration_system: String?
+    source_document_id: String? @index
+    source_file: String? @index
+    source_excerpt: String?
+    confidence: String?
+    visibility: String @index
+    created_at: String?
+    updated_at: String?
+
+    @key(slug)
+}
+
+node ProofPoint {
+    slug: String @index
+    name: String @index
+    proof_type: String @index
+    metric_name: String?
+    metric_value: String?
+    baseline: String?
+    result: String?
+    timeframe: String?
+    customer_segment: String?
+    approved_for_external_use: String @index
+    external_label: String?
+    confidentiality_note: String?
+    source_document_id: String? @index
+    source_file: String? @index
+    source_excerpt: String?
+    confidence: String?
+    visibility: String @index
+    created_at: String?
+    updated_at: String?
+
+    @key(slug)
+}
+
+node Persona {
+    slug: String @index
+    name: String @index
+    role_in_deal: String? @index
+    product_focus: String?
+    cares_about: String?
+    losing_message: String?
+    winning_message: String?
+    economic_role: String?
+    source_document_id: String? @index
+    source_file: String? @index
+    source_excerpt: String?
+    confidence: String?
+    visibility: String @index
+    created_at: String?
+    updated_at: String?
+
+    @key(slug)
+}
+
+node ICPSegment {
+    slug: String @index
+    name: String @index
+    segment_type: String @index
+    revenue_range: String?
+    employee_range: String?
+    plant_range: String?
+    sectors: String?
+    erp_footprint: String?
+    geography: String?
+    trigger_signals: String?
+    disqualifiers: String?
+    channel_notes: String?
+    value_framing: String?
+    status: String? @index
+    source_document_id: String? @index
+    source_file: String? @index
+    source_excerpt: String?
+    confidence: String?
+    visibility: String @index
+    created_at: String?
+    updated_at: String?
+
+    @key(slug)
+}
+
+node Person {
+    slug: String @index
+    name: String @index
+    email: String? @index
+    organization: String? @index
+    role: String?
+    person_type: String @index
+    source_document_id: String? @index
+    source_file: String? @index
+    source_excerpt: String?
+    confidence: String?
+    visibility: String @index
+    created_at: String?
+    updated_at: String?
+
+    @key(slug)
+}
+
+node EmailThread {
+    slug: String @index
+    subject: String @index
+    thread_date: String? @index
+    start_date: String?
+    end_date: String?
+    participants: String?
+    summary: String?
+    status: String @index
+    sensitivity: String @index
+    source_document_id: String? @index
+    source_file: String? @index
+    source_excerpt: String?
+    confidence: String?
+    visibility: String @index
+    created_at: String?
+    updated_at: String?
+
+    @key(slug)
+}
+
+node Decision {
+    slug: String @index
+    title: String @index
+    decision_type: String @index
+    status: String @index
+    summary: String?
+    decision_date: String? @index
+    external_approval_status: String? @index
+    confidentiality_note: String?
+    source_document_id: String? @index
+    source_file: String? @index
+    source_excerpt: String?
+    confidence: String?
+    visibility: String @index
+    created_at: String?
+    updated_at: String?
+
+    @key(slug)
+}
+
+node SourceDocument {
+    slug: String @index
+    file_name: String @index
+    document_type: String @index
+    title: String?
+    content_hash: String @index
+    visibility: String @index
+    source_document_id: String? @index
+    source_file: String? @index
+    source_excerpt: String?
+    confidence: String?
+    reviewed_at: String?
+    created_at: String?
+    updated_at: String?
+
+    @key(slug)
+}
+
+node ExtractionRun {
+    slug: String @index
+    branch_name: String @index
+    model_name: String @index
+    prompt_version: String @index
+    status: String @index
+    started_at: String? @index
+    completed_at: String?
+    source_count: String?
+    notes: String?
+    source_document_id: String? @index
+    source_file: String? @index
+    source_excerpt: String?
+    confidence: String?
+    visibility: String @index
+    created_at: String?
+    updated_at: String?
 
     @key(slug)
 }
 
 edge HasFeature: Product -> Feature {
+    source_document_id: String? @index
+    source_file: String? @index
+    source_excerpt: String?
+    confidence: String?
+    created_at: String?
+
+    @unique(src, dst)
+}
+
+edge ProvenBy: Product -> ProofPoint {
+    source_document_id: String? @index
+    source_file: String? @index
+    source_excerpt: String?
+    confidence: String?
+    created_at: String?
+
+    @unique(src, dst)
+}
+
+edge SupportedBy: Feature -> ProofPoint {
+    source_document_id: String? @index
+    source_file: String? @index
+    source_excerpt: String?
+    confidence: String?
+    created_at: String?
+
+    @unique(src, dst)
+}
+
+edge Targets: Product -> ICPSegment {
+    source_document_id: String? @index
+    source_file: String? @index
+    source_excerpt: String?
+    confidence: String?
+    created_at: String?
+
+    @unique(src, dst)
+}
+
+edge HasPersona: ICPSegment -> Persona {
+    source_document_id: String? @index
+    source_file: String? @index
+    source_excerpt: String?
+    confidence: String?
+    created_at: String?
+
+    @unique(src, dst)
+}
+
+edge Discusses: EmailThread -> Product {
+    source_document_id: String? @index
+    source_file: String? @index
+    source_excerpt: String?
+    confidence: String?
+    created_at: String?
+
+    @unique(src, dst)
+}
+
+edge DiscussedIn: Decision -> EmailThread {
+    source_document_id: String? @index
+    source_file: String? @index
+    source_excerpt: String?
+    confidence: String?
+    created_at: String?
+
+    @unique(src, dst)
+}
+
+edge DecidedBy: Decision -> Person {
+    source_document_id: String? @index
+    source_file: String? @index
+    source_excerpt: String?
+    confidence: String?
+    created_at: String?
+
+    @unique(src, dst)
+}
+
+edge Processed: ExtractionRun -> SourceDocument {
+    source_document_id: String? @index
+    source_file: String? @index
+    source_excerpt: String?
+    confidence: String?
+    created_at: String?
+
     @unique(src, dst)
 }

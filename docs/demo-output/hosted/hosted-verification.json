@@ -1,0 +1,296 @@
+{
+  "access_control": {
+    "dashboard_reader_content_agent_status": 403,
+    "dashboard_reader_email_search_has_result": true,
+    "dashboard_reader_email_search_status": 200,
+    "invalid_mcp_token_status": 401
+  },
+  "approved": [
+    {
+      "reviewer": "reviewer-demo",
+      "run_id": "run-9567cffdf7444e80",
+      "status": "approved"
+    },
+    {
+      "reviewer": "reviewer-demo",
+      "run_id": "run-34423b2bc965448f",
+      "status": "approved"
+    },
+    {
+      "reviewer": "reviewer-demo",
+      "run_id": "run-6221cb664fff4740",
+      "status": "approved"
+    },
+    {
+      "reviewer": "reviewer-demo",
+      "run_id": "run-bfc4eb37e3da4a84",
+      "status": "approved"
+    },
+    {
+      "reviewer": "reviewer-demo",
+      "run_id": "run-ba490f8bd03f4214",
+      "status": "approved"
+    }
+  ],
+  "content_agent": {
+    "facts_used": 3,
+    "has_raw_email_text": false,
+    "status": 200
+  },
+  "diffs_inspected": [
+    {
+      "run_id": "run-9567cffdf7444e80",
+      "top_level_keys": [
+        "added_edges",
+        "added_nodes",
+        "branch_name",
+        "changed_edges",
+        "changed_nodes",
+        "confidence",
+        "counts",
+        "provenance",
+        "removed_edges",
+        "removed_nodes",
+        "run",
+        "source_document",
+        "visibility"
+      ]
+    },
+    {
+      "run_id": "run-34423b2bc965448f",
+      "top_level_keys": [
+        "added_edges",
+        "added_nodes",
+        "branch_name",
+        "changed_edges",
+        "changed_nodes",
+        "confidence",
+        "counts",
+        "provenance",
+        "removed_edges",
+        "removed_nodes",
+        "run",
+        "source_document",
+        "visibility"
+      ]
+    },
+    {
+      "run_id": "run-6221cb664fff4740",
+      "top_level_keys": [
+        "added_edges",
+        "added_nodes",
+        "branch_name",
+        "changed_edges",
+        "changed_nodes",
+        "confidence",
+        "counts",
+        "provenance",
+        "removed_edges",
+        "removed_nodes",
+        "run",
+        "source_document",
+        "visibility"
+      ]
+    },
+    {
+      "run_id": "run-bfc4eb37e3da4a84",
+      "top_level_keys": [
+        "added_edges",
+        "added_nodes",
+        "branch_name",
+        "changed_edges",
+        "changed_nodes",
+        "confidence",
+        "counts",
+        "provenance",
+        "removed_edges",
+        "removed_nodes",
+        "run",
+        "source_document",
+        "visibility"
+      ]
+    },
+    {
+      "run_id": "run-ba490f8bd03f4214",
+      "top_level_keys": [
+        "added_edges",
+        "added_nodes",
+        "branch_name",
+        "changed_edges",
+        "changed_nodes",
+        "confidence",
+        "counts",
+        "provenance",
+        "removed_edges",
+        "removed_nodes",
+        "run",
+        "source_document",
+        "visibility"
+      ]
+    }
+  ],
+  "gtm_agent": {
+    "keys": [
+      "approved_proof_points_used",
+      "competitor_or_displacement_angle",
+      "generation_mode",
+      "graph_evidence",
+      "graph_node_slugs",
+      "grounded_opening_angle",
+      "illustrative_companies",
+      "persona_to_contact",
+      "source_documents",
+      "target_company_profile"
+    ],
+    "proof_points_used": 3,
+    "status": 200
+  },
+  "health": {
+    "api_ok": true,
+    "omnigraph_ok": true,
+    "status": 200
+  },
+  "idempotency": {
+    "approval_status": 200,
+    "counts_after_rerun": {
+      "decisions": 6,
+      "email_threads": 2,
+      "features": 11,
+      "icp_segments": 2,
+      "people": 3,
+      "personas": 4,
+      "products": 2,
+      "proof_points": 8
+    },
+    "diff_status": 200,
+    "features_unchanged": true,
+    "products_unchanged": true,
+    "proof_points_unchanged": true,
+    "rerun_id": "run-65af2d2356b84835"
+  },
+  "ingested": [
+    {
+      "branch": "ing-20260714053110376324-stockly-prod-d802a84c-b4c6c5e87d92",
+      "run_id": "run-9567cffdf7444e80",
+      "seed": "seed-data/stockly-product-overview.md",
+      "status": "pending_review"
+    },
+    {
+      "branch": "ing-20260714053111397791-inspectly-pr-726e20ba-0cb6e1a205e7",
+      "run_id": "run-34423b2bc965448f",
+      "seed": "seed-data/inspectly-product-overview.md",
+      "status": "pending_review"
+    },
+    {
+      "branch": "ing-20260714053112418126-icp-analytos-381c2eb8-a8b8f821d867",
+      "run_id": "run-6221cb664fff4740",
+      "seed": "seed-data/icp-analytos.md",
+      "status": "pending_review"
+    },
+    {
+      "branch": "ing-20260714053113420006-email-01-sto-5019d1d0-298a66ee6571",
+      "run_id": "run-bfc4eb37e3da4a84",
+      "seed": "seed-data/email-01-stockly-pilot-thread.md",
+      "status": "pending_review"
+    },
+    {
+      "branch": "ing-20260714053114437802-email-02-ins-574b5935-d27889718862",
+      "run_id": "run-ba490f8bd03f4214",
+      "seed": "seed-data/email-02-inspectly-medical-thread.md",
+      "status": "pending_review"
+    }
+  ],
+  "main_counts_after_approval": {
+    "decisions": 6,
+    "email_threads": 2,
+    "features": 11,
+    "icp_segments": 2,
+    "people": 3,
+    "personas": 4,
+    "products": 2,
+    "proof_points": 8
+  },
+  "main_counts_before": {
+    "decisions": 0,
+    "email_threads": 0,
+    "features": 0,
+    "icp_segments": 0,
+    "people": 0,
+    "personas": 0,
+    "products": 0,
+    "proof_points": 0
+  },
+  "mcp": {
+    "get_icp_segments": {
+      "has_error": false,
+      "has_result": true,
+      "status": 200
+    },
+    "get_personas": {
+      "has_error": false,
+      "has_result": true,
+      "status": 200
+    },
+    "get_product": {
+      "has_error": false,
+      "has_result": true,
+      "status": 200
+    },
+    "get_product_features": {
+      "has_error": false,
+      "has_result": true,
+      "status": 200
+    },
+    "get_product_proof_points": {
+      "has_error": false,
+      "has_result": true,
+      "status": 200
+    },
+    "get_recent_changes": {
+      "has_error": false,
+      "has_result": true,
+      "status": 200
+    },
+    "initialize": {
+      "has_error": false,
+      "has_result": true,
+      "status": 200
+    },
+    "search_context": {
+      "has_error": false,
+      "has_result": true,
+      "status": 200
+    },
+    "tools/list": {
+      "has_error": false,
+      "has_result": true,
+      "status": 200
+    }
+  },
+  "pending_after_ingest": 5,
+  "pending_branch_count_at_least_five": true,
+  "persistence": {
+    "changes_status": 200,
+    "commits": 1,
+    "content_agent_status": 200,
+    "content_facts": 3,
+    "counts": {
+      "decisions": 6,
+      "email_threads": 2,
+      "features": 11,
+      "icp_segments": 2,
+      "people": 3,
+      "personas": 4,
+      "products": 2,
+      "proof_points": 8
+    },
+    "health_ok": true,
+    "health_status": 200,
+    "mcp_search_has_result": true,
+    "mcp_search_status": 200,
+    "pending_reviews": 0,
+    "reviews_status": 200,
+    "workflow_actions": 12
+  },
+  "reviewer_attribution_ok": true
+}

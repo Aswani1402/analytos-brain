@@ -1,6 +1,16 @@
 # Deployment
 
-Prepared but not deployed:
+Deployed on Railway:
+
+- Backend URL: https://analytos-brain-api-production.up.railway.app
+- Hosted MCP URL: https://analytos-brain-api-production.up.railway.app/mcp
+- Dashboard URL: https://analytos-brain-dashboard-production.up.railway.app
+- Project: `analytos-brain`
+- Backend service: `analytos-brain-api`
+- Dashboard service: `analytos-brain-dashboard`
+- Backend persistent volume: `/var/lib/omnigraph`
+
+Deployment artifacts:
 
 - `Dockerfile.api` for FastAPI.
 - `Dockerfile.api` installs pinned Omnigraph v0.8.1 release binaries for both
@@ -123,11 +133,11 @@ Linux amd64 and arm64 are handled explicitly. Unsupported architectures fail at
 build time instead of installing the wrong binary. Do not commit local graph
 files, SQLite files, or secrets.
 
-Verify hosted health after Railway starts:
+Verify hosted health:
 
 ```powershell
-Invoke-RestMethod https://<backend>/health
-Invoke-RestMethod https://<backend>/mcp
+Invoke-RestMethod https://analytos-brain-api-production.up.railway.app/health
+Invoke-RestMethod https://analytos-brain-api-production.up.railway.app/mcp
 ```
 
 Inspect Railway build logs for:
@@ -140,25 +150,34 @@ Inspect Railway build logs for:
 
 ## Railway Dashboard Service
 
-1. Create a second Railway service from the same GitHub repository.
-2. Select `apps/dashboard/Dockerfile`.
-3. Set `VITE_API_BASE_URL` to the backend public URL.
+1. Create a second Railway service named `analytos-brain-dashboard`.
+2. Set `VITE_API_BASE_URL` to the backend public URL.
+3. Deploy the `apps/dashboard` directory as the service root with
+   `./Dockerfile`.
 4. Generate the dashboard domain.
-5. Update backend `ANALYTOS_CORS_ORIGINS` to include the dashboard URL.
+5. Update backend `ANALYTOS_CORS_ORIGINS` to the exact dashboard URL.
 
 No browser-visible secret should be added to the frontend bundle.
 
+Note: the repository-level `railway.toml` is intentionally backend-oriented, so
+GitHub-triggered Railway deployments use `Dockerfile.api`. The dashboard was
+deployed to its Railway service from an `apps/dashboard` archive with
+`RAILWAY_DOCKERFILE_PATH=./Dockerfile`.
+
 ## Hosted Bootstrap
 
-After deployment, populate the hosted graph only through governed API/HITL:
+The hosted graph was populated only through governed API/HITL:
 
 ```powershell
-python scripts\hosted_bootstrap.py --base-url https://<backend> --api-token <secret> --reviewer reviewer-demo
-python scripts\mcp_http_smoke.py --base-url https://<backend> --token <content-agent-mcp-token>
+python scripts\hosted_bootstrap.py --base-url https://analytos-brain-api-production.up.railway.app --api-token <secret> --reviewer reviewer-demo
+python scripts\mcp_http_smoke.py --base-url https://analytos-brain-api-production.up.railway.app --token <content-agent-mcp-token>
 ```
 
-The bootstrap script ingests all five seed documents, reviews/approves them,
-runs both agents, and never loads directly into `main`.
+The hosted verification ingested all five seed documents, inspected review
+diffs, approved through HITL as `reviewer-demo`, reran the Stockly product
+document for idempotency, verified agents/MCP/access control, and never loaded
+directly into `main`. Sanitized results are in
+`docs/demo-output/hosted/hosted-verification.json`.
 
 Before real hosting:
 

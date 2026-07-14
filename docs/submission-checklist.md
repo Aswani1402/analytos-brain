@@ -2,10 +2,11 @@
 
 ## Links
 
-- GitHub repository URL: `[paste GitHub URL]`
-- Hosted dashboard URL: `[paste hosted dashboard URL]`
-- Hosted MCP URL: `[paste hosted MCP URL]`
-- Credentials: `[paste demo credentials or access instructions]`
+- GitHub repository URL: https://github.com/Aswani1402/analytos-brain
+- Hosted dashboard URL: https://analytos-brain-dashboard-production.up.railway.app
+- Hosted MCP URL: https://analytos-brain-api-production.up.railway.app/mcp
+- Backend URL: https://analytos-brain-api-production.up.railway.app
+- Credentials: Railway/API/MCP secrets are stored outside the repository and must not be pasted into this checklist.
 - Demo video URL: `[paste demo video URL]`
 - Resume Drive URL: `[paste resume Drive URL]`
 
@@ -33,10 +34,11 @@ Omnigraph 0.8.1 native policy is configured and validates for coarse graph and
 branch actions. Fine-grained node-type restrictions such as denied EmailThread
 reads are enforced by `apps/api/access_control.py` and MCP record filtering.
 
-Hosted deployment is prepared but not performed in this local verification pass.
-The backend container is configured to install and verify Omnigraph v0.8.1
-inside the image; the first real Docker build should be confirmed in GitHub
-Actions or Railway because Docker is not installed locally.
+Hosted deployment has been performed on Railway. The backend container installed
+and verified Omnigraph v0.8.1 in Railway, checksum verification passed, the
+persistent volume is mounted at `/var/lib/omnigraph`, and the governed
+five-document HITL flow populated hosted `main`. Sanitized hosted verification
+output is in `docs/demo-output/hosted/hosted-verification.json`.
 
 ## Railway Variables Checklist
 

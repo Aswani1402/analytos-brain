@@ -1,8 +1,8 @@
 FROM node:22-alpine AS build
 WORKDIR /app
-COPY package.json package-lock.json ./
+COPY apps/dashboard/package.json apps/dashboard/package-lock.json ./
 RUN npm ci
-COPY . .
+COPY apps/dashboard/ .
 RUN npm run build
 
 FROM nginx:1.27-alpine

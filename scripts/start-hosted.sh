@@ -56,6 +56,9 @@ if [ ! -e "${OMNIGRAPH_GRAPH_URI}" ]; then
 fi
 
 "${OMNIGRAPH_BIN}" cluster validate --config "${OMNIGRAPH_CLUSTER}"
+if [ ! -f "${OMNIGRAPH_CLUSTER}/__cluster/state.json" ]; then
+  "${OMNIGRAPH_BIN}" cluster import --config "${OMNIGRAPH_CLUSTER}"
+fi
 "${OMNIGRAPH_BIN}" cluster plan --config "${OMNIGRAPH_CLUSTER}"
 "${OMNIGRAPH_BIN}" cluster apply --config "${OMNIGRAPH_CLUSTER}"
 
